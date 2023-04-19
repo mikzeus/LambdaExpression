@@ -1,0 +1,72 @@
+
+     Bir insanin yasi 0'dan kucuk, 120'den buyuk olamaz diye dusundugumuzde, kullanici bize 0'dan kucuk
+     120'den buyuk bir sayi verirse diye bir exception firlatilmasini istiyoruz. Exception, bu soruda
+     IllegalArgumentException uygundur.
+     if statement alt satirinda throw new yazar yazmaz ekranda sirasiyle exception isimlerini gorduk ve
+     IllegalArgumentException'i sectik. If statement sonrasi else blogu actik. Yukarida olusturdugumuz
+     olumsuz senaryo disinda istenen aralikta bir yas girilirse "Uygun Bir Yas Girdiniz" yazilacak.
+     Kullaniciya mesaj gondermistik. Kodumuzu calistirinca yasinizi giriniz mesajini gorduk ve yas olarak 100 girince problem cikmadi.
+      Ancak sonraki yas girmede -8 girdik. Bu nedenle ilgili exception firlatildi.
+     Daha sonra kodu yine calistirinca yas olarak 121 girdik. Ilgili exception firlatildi ve alt kisimda exit
+     code 1 goruldu.
+
+     Tam 0 ya da 120 verdigimizde yine exception firlatildi. Cunku if statement icinde yas<=0 || yas>=120
+     yazmistik.
+
+     try catch tamamen bir exception'i handle etme islemi olup. Biz sorumuzun cozumunde try catch yerine if ve else bloklari kullandik.
+      Cunku exception firlatilmasini biz istedik. Istedigimiz isimle exception firlattirabiliriz.
+
+      ################################################################################################################
+
+       Bir list disindaki collection uyelerinde islem yapacaksak Iterator kullanabiliriz.
+        Yani index yapisi olmayan collection uyelerinde kullanilabilir.
+
+       Bir Set olusturunuz icerisine int elemanlar ekleyiniz. Set'deki cift elemanları iterator ile siliniz.
+       Setlerde index yapisi yoktur ve dolayisiyla Iterator kullanabiliriz. Set bir interfacedir.
+       Data turu olan Set constructor kismi tarafindan override edilmeli. Bu yuzden Set olustururken new sonrasinda dogrudan Set degil override islemi yapacak childlari secilir. Ornegin HashSet ya da TreeSet secmeliyiz.
+
+       Once bir Set olusturduk; Set<Integer> st=new TreeSet<>(Arrays.asList(1,2,3,4,5);
+       st isimli Set'imizi sout icinde st olarak yazinca ekranda Set'in elemanlari 1,2,3,4,5'i gorduk.
+
+       Daha sonra Iterator object'ini olusturduk;
+       Iterator itr=st.iterator(); Listler haric hicbir collections uyesinde index yapisi yoktur.
+       Sorumuzda Set yerine List denseydi Iterator kullanmaz for loop kullanirdik. Cunku List'de index yapisi
+       var.
+
+       Iterator object'ini olusturduktan sonra tum elemanlari kontrol edebilmemiz icin bir while loop kullanacagiz.
+       while icinde Iterator objectimizin ismi itr.hasNext() yazdik. Bu sekilde tum elemanlar kontrol edilecek.Iterator yaninda eleman oldugu surece while loop devam edecek sekilde bir sart yazdik while parantezi icine.
+       Iterator'a assign edilen Set;imiz icine bakilacak. En basa gelinir ve onunde bir eleman var mi diye bakilir, varsa true verir ve true oldugu surece while dongusu devam edecek. Ilk eleman 1, ve sonraki
+       elemanlara bakilacak. Bunu yapabilmesi yani bir adim daha ileri gidebilmesi icin itr.next(); yazdik. next ile bir sonraki elemanin onune gelinir. itr.next();'i once bir int variable'ina assign ettik ancak kizarma olunca Object'e assign edince sorun cozuldu. Object sayi=its.next();
+
+       Sonraki kisimda bir if statement kullandik. Cift sayilari bulabilmek ve silme icin if statement'i kullandik.
+       Object sayi icinde toplanan sayilari if statement icinde Integer yazarak, sayilari Integer'a cast ettik.
+       if((Integer) sayi%2==0){
+       itr.remove();  remove metodu, sayi cift oldugunda o sayiyi sildi. Cift degilse silmedi.
+       } ve sonra sout icine st yazdik. Kodu calistirinca bize sadece tek sayilari verdi.
+
+       #################################################################################################################
+
+        Bir Deque olusturunuz icerisine int elemanlar ekleyiniz.
+          5'den buyuk elemanları iterator ile yazdırınız. Degue'de index yapisi yoktur ve bu nedenle bunlarda
+          for loop kullanamayiz, ancak Iterator kullanabiliriz. Iterator kullanirsak collection elemanlari
+          icinde gezinebiliriz.
+
+          Soruda bizden bir Deque olusturmamiz istendiginden yeni bir Deque olusturduk. Deque bir interface'dir.
+          Dolayisiyla Deque'in override edilmesi gerektiginden biz new sonrasi dogrudan Deque yazmayiz, onun
+          yerine childlardan LinkedList'i sectik ve parantez icinde elemanlari eklerken list'e cevirdik.
+
+          Deque<Integer> dq=new LinkedList<>(Arrays.asList(1,8,3,6,7));
+          sout icine dq yazinca elemanlarini ekranda gorduk.
+
+          Deque'de index yapisi olmayinca for loop yerine Iterator kullanacagiz.
+
+        Bunun icin Iterator object'i olusturduk;
+        Iterator itr=dq.iterator(); Boyle yaptigimizda Deque'imizin elemanlari basina Iterator geldi.
+        ->I'i bir Iterator gibi dusunelim. I 1, 8, 3, 6, 7 elemanlarin en basina one geldi.
+
+        daha sonra while ile sartimizi yazdik. Sayilari bir sonraki eleman oldugu surece yani true verdikce
+        kontrol etme devam edecek. next() ile eleman oldugunu gordukten true verdikten sonra bir sonraki
+        elamana gelecek. Biz itr.next()'i Object sayiya assign ettik. next() ile gelen her sayi Object sayiya
+        assign edilmis olacak.
+        Sonraki asamada if statement kullandik. If icnde (Integer)sayi>5) yazdik. Boylece 5'ten buyuk sayilari
+        gorunce devaminda sout ile yazdirilmasini istedik. Kodu calistirinca ekranda 5'ten buyuk sayilari gorduk.
